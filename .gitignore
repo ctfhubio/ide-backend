@@ -1,0 +1,17 @@
+# IDE specific files
+.idea/
+
+# package directories
+node_modules/
+jspm_packages/
+
+# Serverless directories
+.serverless
+
+# Other ignored directories
+.git/
+
+# Other ignored files
+.DS_Store
+secrets.json
+.env
