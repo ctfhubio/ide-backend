@@ -8,5 +8,13 @@ module.exports = {
 
       return error;
     }
+  },
+  ERR_INVALID_REQUEST_SUBMISSION: {
+    error: () => {
+      const error = new Error('Invalid input.');
+      error.code = 'ERR_INVALID_REQUEST_SUBMISSION';
+
+      return error;
+    }
   }
 };
