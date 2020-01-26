@@ -36,7 +36,8 @@ app.use((err, req, res, next) => {
     return res.status(status).json({
       error: {
         code: status,
-        message: err.message || 'Something went wrong.'
+        message: err.message || 'Something went wrong.',
+        data: err.data
       }
     });
   }
