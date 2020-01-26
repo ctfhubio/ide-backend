@@ -5,6 +5,17 @@ const STATUS = require('../../constants/ide-request-constants');
 
 const IDERequest = db.IDERequests;
 
+const isValidDocumentId = id => {
+  return id.match(/^[0-9a-fA-F]{24}$/);
+};
+
+/**
+ * @type {{
+ * saveRequest: (function(): string),
+ * saveOutput: (function(id: string, output: {stdout: string, stderr: string, status?: string}): Promise<*>)
+ * findRequestById: (function(id: string): boolean|{id: string, stdout: string, stderr: string, status: string})
+ * }}
+ */
 module.exports = {
   saveRequest: async () => {
     const ideRequest = new IDERequest({});
@@ -14,10 +25,15 @@ module.exports = {
   },
 
   saveOutput: async (id, output) => {
+    if (!isValidDocumentId(id)) {
+      // Invalid MongoDB Object ID.
+      return false;
+    }
+
     const ideRequest = await IDERequest.findOne(id);
 
     if (!ideRequest) {
-      return Promise.reject(new Error());
+      return Promise.reject(new Error('Document not found.'));
     }
 
     ideRequest.stdout = output.stdout || '';
@@ -27,8 +43,8 @@ module.exports = {
     return ideRequest.save();
   },
 
-  findById: async id => {
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+  findRequestById: async id => {
+    if (!isValidDocumentId(id)) {
       // Invalid MongoDB Object ID.
       return false;
     }
