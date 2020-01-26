@@ -2,8 +2,11 @@
 
 module.exports = {
   PENDING: 'pending',
-  FAILURE: 'failure',
+  COMPILING: 'compiling',
+  RUNNING: 'running',
   COMPILE_ERROR: 'compile-error',
   RUNTIME_ERROR: 'runtime-error',
+  TIMEOUT: 'timeout',
+  FAILURE: 'failure',
   SUCCESS: 'success'
 };
