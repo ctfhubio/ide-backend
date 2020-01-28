@@ -47,7 +47,7 @@ module.exports = {
   },
 
   /**
-   * @param {{id: id, stdout: string, stderr: string, compile_stderr: string, isTLE: boolean}} data
+   * @param {{id: string, stdout: string, stderr: string, compile_stderr: string, isTLE: boolean}} data
    * @return {Promise<*>}
    */
   updateIDERequest: async data => {
