@@ -55,11 +55,6 @@ module.exports = {
       return false;
     }
 
-    return {
-      id: ideRequest._id,
-      stdout: ideRequest.stdout,
-      stderr: ideRequest.stderr,
-      status: ideRequest.status
-    };
+    return ideRequest;
   }
 };
