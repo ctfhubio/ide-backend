@@ -7,6 +7,6 @@ const router = express.Router();
 
 const controller = require('../controllers');
 
-router.all('/healthcheck', controller.check.healthcheck);
+router.all('/healthcheck', controller.healthcheckController.healthcheck);
 
 module.exports = router;
