@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  taskmaster:
+    build: .
+    image: ifaisalalam/ide-backend
+    restart: on-failure
+    ports:
+    - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+    - ~/.gcloud/credentials.json:/home/node/.gcloud/credentials.json
+
+  redis:
+    image: redis:4-alpine
+    restart: on-failure
+    ports:
+      - "6379:6379"

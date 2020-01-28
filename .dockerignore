@@ -1,0 +1,15 @@
+.git/
+.idea/
+node_modules/
+terraform/
+
+.gitignore
+.dockerignore
+.editorconfig
+.env
+.env.example
+.travis.yml
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
