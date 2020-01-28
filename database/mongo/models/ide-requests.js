@@ -15,6 +15,10 @@ const schema = new Schema(
       type: String,
       default: ''
     },
+    compile_stderr: {
+      type: String,
+      default: ''
+    },
     status: {
       type: String,
       required: true,
