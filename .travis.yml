@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+  - "10"
+
+sudo: required
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - bash
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build
+      install:
+        - ./scripts/build-docker-image.sh
+      script:
+        - ./scripts/push-docker-image.sh
+
+stages:
+  - name: build
+    if: type = push
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - tech@ctfhub.io
