@@ -1,6 +1,7 @@
 'use strict';
 
 const ide = require('../../src/ide/ide-requests');
+const hashing = require('../utils/hashing');
 
 module.exports = {
   saveRequest: async (req, res, next) => {
@@ -11,9 +12,16 @@ module.exports = {
       const lang = body.lang;
 
       const requestId = await ide.saveRequest({ source, lang, stdin });
+      const baseUrl = process.env.APP_URL || 'http://localhost:3000';
+      const signedToken = hashing.generateSignedTokenFromId(requestId);
+      const callbackUrl = `${baseUrl}/ide/status/${requestId}?signature=${signedToken}`;
 
       return res.status(201).json({
-        id: requestId
+        status: 'success',
+        data: {
+          requestId,
+          callbackUrl
+        }
       });
     } catch (err) {
       next(err);
