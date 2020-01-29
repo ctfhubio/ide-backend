@@ -1,6 +1,6 @@
-FROM node:10-alpine
+FROM node:10
 
-RUN apk add g\+\+ make gcc python linux-headers paxctl gnupg
+RUN apt-get install -y make gcc python g\+\+
 
 WORKDIR /home/node/app
 
