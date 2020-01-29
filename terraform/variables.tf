@@ -31,7 +31,7 @@ variable "max_unavailable_fixed" {
 }
 
 variable "max_surge_fixed" {
-  default = 1
+  default = 2
 }
 
 variable "machine_type" {
