@@ -8,6 +8,15 @@ module.exports = {
       },
       cpp: {
         DEFAULT_TIMEOUT: 5
+      },
+      python2: {
+        DEFAULT_TIMEOUT: 5
+      },
+      python3: {
+        DEFAULT_TIMEOUT: 5
+      },
+      nodejs8: {
+        DEFAULT_TIMEOUT: 5
       }
     }
   },
