@@ -14,7 +14,7 @@ module.exports = {
       const requestId = await ide.saveRequest({ source, lang, stdin });
       const baseUrl = process.env.APP_URL || 'http://localhost:3000';
       const signedToken = hashing.generateSignedTokenFromId(requestId);
-      const callbackUrl = `${baseUrl}/ide/status/${requestId}?signature=${signedToken}`;
+      const callbackUrl = `${baseUrl}/status/${requestId}?signature=${signedToken}`;
 
       return res.status(201).json({
         status: 'success',
