@@ -13,7 +13,7 @@ module.exports = async (event, context) => {
 
   /**
    * @typedef {{id: string, lang: string, source: string, stdin: string}} Job
-   * @type {{job: Job, stdout: string, stderr: string, compile_stderr: string, isTLE: boolean}}
+   * @type {{job: Job, stdout: string, stderr: string, compile_stderr: string, time_log: string, isTLE: boolean}}
    */
   const data = JSON.parse(pubsubMessage);
   const job = data.job;
@@ -23,6 +23,7 @@ module.exports = async (event, context) => {
     stdout: data.stdout,
     stderr: data.stderr,
     compile_stderr: data.compile_stderr,
+    time_log: data.time_log,
     isTLE: data.isTLE
   };
 

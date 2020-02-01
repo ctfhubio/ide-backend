@@ -19,6 +19,10 @@ const schema = new Schema(
       type: String,
       default: ''
     },
+    time_log: {
+      type: String,
+      default: '0.00 seconds'
+    },
     status: {
       type: String,
       required: true,

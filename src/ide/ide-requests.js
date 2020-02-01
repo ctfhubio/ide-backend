@@ -42,12 +42,13 @@ module.exports = {
       stdout: data.stdout,
       stderr: data.stderr,
       compile_stderr: data.compile_stderr,
+      time_log: data.time_log,
       status: data.status
     };
   },
 
   /**
-   * @param {{id: string, stdout: string, stderr: string, compile_stderr: string, isTLE: boolean}} data
+   * @param {{id: string, stdout: string, stderr: string, compile_stderr: string, time_log: string, isTLE: boolean}} data
    * @return {Promise<*>}
    */
   updateIDERequest: async data => {
@@ -70,6 +71,7 @@ module.exports = {
     ideRequest.stdout = data.stdout;
     ideRequest.stderr = data.stderr;
     ideRequest.compile_stderr = data.compile_stderr;
+    ideRequest.time_log = `${data.time_log || '0.00'} seconds`;
     ideRequest.status = status;
 
     return ideRequest.save();
