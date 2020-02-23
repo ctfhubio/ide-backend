@@ -7,7 +7,7 @@ variable "region" {
 }
 
 variable "zone" {
-  default = "asia-south1-c"
+  default = "asia-south1-b"
 }
 
 variable "private_subnet_cidr" {
@@ -15,7 +15,7 @@ variable "private_subnet_cidr" {
 }
 
 variable "min_replica" {
-  default = 2
+  default = 1
 }
 
 variable "max_replica" {
@@ -31,7 +31,7 @@ variable "max_unavailable_fixed" {
 }
 
 variable "max_surge_fixed" {
-  default = 2
+  default = 1
 }
 
 variable "machine_type" {
