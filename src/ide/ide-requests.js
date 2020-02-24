@@ -48,7 +48,7 @@ module.exports = {
   },
 
   /**
-   * @param {{id: string, stdout: string, stderr: string, compile_stderr: string, time_log: string, isTLE: boolean}} data
+   * @param {{id: string, stdout: string, stderr: string, compile_stdout: string, compile_stderr: string, exec_time: string, isTLE: boolean, isRuntimeErr: boolean, isWorkerError: boolean}} data
    * @return {Promise<*>}
    */
   updateIDERequest: async data => {
@@ -64,14 +64,16 @@ module.exports = {
       status = STATUS.COMPILE_ERROR;
     } else if (data.isTLE) {
       status = STATUS.TIMEOUT;
-    } else if (data.stderr) {
+    } else if (data.isRuntimeErr) {
       status = STATUS.RUNTIME_ERROR;
+    } else if (data.isWorkerError) {
+      status = STATUS.FAILURE;
     }
 
     ideRequest.stdout = data.stdout;
     ideRequest.stderr = data.stderr;
     ideRequest.compile_stderr = data.compile_stderr;
-    ideRequest.time_log = `${data.time_log || '0.00'} seconds`;
+    ideRequest.time_log = `${data.exec_time || '0.00'} seconds`;
     ideRequest.status = status;
 
     return ideRequest.save();

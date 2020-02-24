@@ -13,7 +13,7 @@ module.exports = async (event, context) => {
 
   /**
    * @typedef {{id: string, lang: string, source: string, stdin: string}} Job
-   * @type {{job: Job, stdout: string, stderr: string, compile_stderr: string, time_log: string, isTLE: boolean}}
+   * @type {{job: Job, stdout: string, stderr: string, compile_stdout: string, compile_stderr: string, exec_time: string, isTLE: boolean, isRuntimeErr: boolean, is_worker_error: boolean}}
    */
   const data = JSON.parse(pubsubMessage);
   const job = data.job;
@@ -22,9 +22,12 @@ module.exports = async (event, context) => {
     id: job.id,
     stdout: data.stdout,
     stderr: data.stderr,
+    compile_stdout: data.compile_stdout,
     compile_stderr: data.compile_stderr,
-    time_log: data.time_log,
-    isTLE: data.isTLE
+    exec_time: data.exec_time,
+    isTLE: data.isTLE,
+    isRuntimeErr: data.isRuntimeErr,
+    isWorkerError: data.is_worker_error
   };
 
   return ide.updateIDERequest(payload);
