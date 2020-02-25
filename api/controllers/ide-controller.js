@@ -16,7 +16,7 @@ module.exports = {
       const signedToken = hashing.generateSignedTokenFromId(requestId);
       const callbackUrl = `${baseUrl}/status/${requestId}?signature=${signedToken}`;
 
-      return res.status(201).json({
+      return res.status(202).json({
         status: 'success',
         data: {
           requestId,
