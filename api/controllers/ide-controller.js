@@ -37,5 +37,41 @@ module.exports = {
     } catch (err) {
       next(err);
     }
+  },
+
+  saveStatus: async (req, res, next) => {
+    try {
+      const message = req.body.message || {};
+      const encodedData = message.data;
+
+      if (!encodedData) {
+        return res.status(400).send();
+      }
+
+      /**
+       * @typedef {{id: string, lang: string, source: string, stdin: string}} Job
+       * @type {{job: Job, stdout: string, stderr: string, compile_stdout: string, compile_stderr: string, exec_time: string, isTLE: boolean, isRuntimeErr: boolean, is_worker_error: boolean}}
+       */
+      const data = JSON.parse(Buffer.from(encodedData, 'base64').toString());
+      const job = data.job;
+      console.log(data);
+      const payload = {
+        id: job.id,
+        stdout: data.stdout,
+        stderr: data.stderr,
+        compile_stdout: data.compile_stdout,
+        compile_stderr: data.compile_stderr,
+        exec_time: data.exec_time,
+        isTLE: data.isTLE,
+        isRuntimeErr: data.isRuntimeErr,
+        isWorkerError: data.is_worker_error
+      };
+
+      await ide.updateIDERequest(payload);
+
+      return res.status(200).send();
+    } catch (err) {
+      next(err);
+    }
   }
 };

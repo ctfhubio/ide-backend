@@ -66,6 +66,7 @@ APP_SIGNING_SECRET=${var.app_signing_secret}
 MONGO_DB_DSN=${var.mongo_db_dsn}
 GOOGLE_CLOUD_PROJECT=${var.google_cloud_project}
 PUBSUB_TOPIC_NAME=${var.pubsub_topic_name}
+PUBSUB_VERIFICATION_TOKEN=${var.pubsub_verification_token}
 ENV
 
 docker pull ${var.app_docker_image_name}:latest

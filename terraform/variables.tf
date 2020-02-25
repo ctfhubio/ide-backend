@@ -68,6 +68,10 @@ variable "pubsub_topic_name" {
   description = "Name of Cloud PubSub topic."
 }
 
+variable "pubsub_verification_token" {
+  description = "Token used on /api/status/update API to validate the request is really coming from Pubsub."
+}
+
 variable "app_docker_image_name" {
   default = "ifaisalalam/ide-backend"
 }

@@ -16,4 +16,10 @@ router.get(
   controller.ideController.checkStatus
 );
 
+router.post(
+  '/status/update',
+  middleware.authPubsub,
+  controller.ideController.saveStatus
+);
+
 module.exports = router;
