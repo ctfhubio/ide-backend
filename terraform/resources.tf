@@ -61,6 +61,7 @@ touch /app/.env
 
 tee -a /app/.env > /dev/null <<ENV
 NODE_ENV=${var.app_env}
+BASE_URL=${var.base_url}
 APP_URL=${var.app_url}
 APP_SIGNING_SECRET=${var.app_signing_secret}
 MONGO_DB_DSN=${var.mongo_db_dsn}

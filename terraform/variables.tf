@@ -46,6 +46,11 @@ variable "app_env" {
   default = "production"
 }
 
+variable "base_url" {
+  default = "https://ide.ctfhub.io"
+  description = "Base URL"
+}
+
 variable "app_url" {
   default = "https://ide.ctfhub.io/api"
   description = "Base URL of backend API."
