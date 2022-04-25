@@ -22,7 +22,7 @@
     "http-errors": "~1.8.0",
     "http-status-codes": "^1.4.0",
     "mongoose": "^5.9.21",
-    "underscore": "^1.9.2"
+    "underscore": "^1.13.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",
